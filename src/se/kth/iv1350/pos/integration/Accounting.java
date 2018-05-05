@@ -7,7 +7,8 @@ package se.kth.iv1350.pos.integration;
 
 /**
  *
- * @author oscar
+ * The Class that handels calls with the external Accounting system. Not
+ * implemented, but recives info that the class needs.
  */
 public class Accounting {
     private int balance;

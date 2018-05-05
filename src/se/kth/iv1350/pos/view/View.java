@@ -30,9 +30,9 @@ public class View {
         ItemDTO searchedItem = new ItemDTO(1, 1, 0);
         contr.startSale();
         SaleInfo saleInfo = contr.searchEnteredItem(searchedItem);
-        System.out.println("The total price is: "+saleInfo.getRunningTotal() +"and the price of scanned item is: "+saleInfo.getcurrentItemPrice());
+        System.out.println("The total price is: "+saleInfo.getRunningTotal() +"\nScanned item price is: "+saleInfo.getcurrentItemPrice());
         SaleInfo endSaleInfo = contr.endSale();
-        System.out.println("The final price is: "+endSaleInfo.getRunningTotal());
+        System.out.println("The final price is: "+endSaleInfo.getRunningTotal()+"\n");
         int paidAmmount = 20;
         contr.pay( paidAmmount);
     }

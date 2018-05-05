@@ -23,9 +23,8 @@ public class Receipt {
      **/
      public String createReceiptString() {
         StringBuilder builder = new StringBuilder();
-        appendLine(builder, "Sale");
+        appendLine(builder, "Sale Receipt");
         endSection(builder);
-
         builder.append("Sold ItemID: ");
         appendLine(builder, StringValueSoldItemID());
         builder.append("Cost: ");

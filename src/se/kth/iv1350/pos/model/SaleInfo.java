@@ -38,7 +38,6 @@ public class SaleInfo {
     public SaleInfo recordSaleInfo(ItemDTO foundItem){
         this.runningTotal =+ foundItem.getPrice();
         this.curentItemPrice = foundItem.getPrice();
-                
         
         return this;
     }

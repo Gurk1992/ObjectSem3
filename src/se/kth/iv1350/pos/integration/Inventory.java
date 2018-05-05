@@ -7,7 +7,8 @@ package se.kth.iv1350.pos.integration;
 import se.kth.iv1350.pos.model.SaleInfo;
 /**
  *
- * @author oscar
+ * The Class that handels calls with the external Inventory system. Not
+ * implemented, but recives info that the class needs.
  */
 public class Inventory {
     

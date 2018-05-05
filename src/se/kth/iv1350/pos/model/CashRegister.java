@@ -17,7 +17,11 @@ public class CashRegister {
    public CashRegister(Accounting accounting){
        this.accounting = accounting;
    }
-    
+    /**
+     * Uppdates balance to pass along to accounting.
+     * 
+     * @param payment is the CashPayment, which contains totalammount and paidammount
+     **/
     public void addPayment(CashPayment payment) {
         this.balance = balance + (payment.getTotalCost());
         this.accounting.uppdateAccounting(this.balance);
