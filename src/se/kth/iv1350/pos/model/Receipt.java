@@ -27,22 +27,22 @@ public class Receipt {
         endSection(builder);
 
         builder.append("Sold ItemID: ");
-        appendLine(builder, SoldItemID());
+        appendLine(builder, StringValueSoldItemID());
         builder.append("Cost: ");
-        appendLine(builder, TotalCost());
+        appendLine(builder, StringValueTotalCost());
         builder.append("Change: ");
-        appendLine(builder, Change());
+        appendLine(builder, StringValueChange());
         endSection(builder);
         
         return builder.toString();
     }
-    private String SoldItemID(){
+    private String StringValueSoldItemID(){
         return String.valueOf(currentSaleInfo.currentItemDTO().getItemID());
     }
-    private String TotalCost(){
+    private String StringValueTotalCost(){
         return String.valueOf(currentSaleInfo.getRunningTotal());
     }
-    private String Change(){
+    private String StringValueChange(){
         return String.valueOf(currentSaleInfo.ammountofChange());
     }
     private void appendLine(StringBuilder builder, String line) {

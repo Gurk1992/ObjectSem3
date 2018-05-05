@@ -22,7 +22,7 @@ import se.kth.iv1350.pos.integration.Printer;
 public class Controller {
    private Sale sale;
    private ItemRegistry itemRegistry;
-   private SaleInfo CurrentSaleInfo;
+   private SaleInfo currentSaleInfo;
    private Accounting accounting;
    private Inventory inventory;
    private Printer printer;
@@ -50,14 +50,14 @@ public class Controller {
      * @return info about current sale
      **/
     public SaleInfo searchEnteredItem(ItemDTO searchedItem){
-      return CurrentSaleInfo = sale.registerItem(searchedItem);
+      return currentSaleInfo = sale.registerItem(searchedItem);
     }
     /**
      * Fetches current SaleInfo
      * @return uppdates current SaleInfo
      **/
     public SaleInfo endSale(){
-      return CurrentSaleInfo = CurrentSaleInfo.fetchSaleInfo(CurrentSaleInfo);   
+      return currentSaleInfo = currentSaleInfo.fetchSaleInfo(currentSaleInfo);   
     }
     /**
      * Registers payment of current sale.
