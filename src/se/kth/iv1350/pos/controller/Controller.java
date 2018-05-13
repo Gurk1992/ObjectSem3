@@ -5,6 +5,8 @@
  */
 package se.kth.iv1350.pos.controller;
 
+
+
 import se.kth.iv1350.pos.integration.ItemDTO;
 import se.kth.iv1350.pos.model.Sale;
 import se.kth.iv1350.pos.model.SaleInfo;
@@ -14,12 +16,16 @@ import se.kth.iv1350.pos.model.CashRegister;
 import se.kth.iv1350.pos.integration.Accounting;
 import se.kth.iv1350.pos.integration.Inventory;
 import se.kth.iv1350.pos.integration.Printer;
+import se.kth.iv1350.pos.integration.ItemRegistryException;
+import se.kth.iv1350.pos.model.SaleObserver;
+
 
 /**
  * This is the applications only controller class. All calls to model pass 
  * through here.
 **/
 public class Controller {
+   private SaleObserver saleObserver;
    private Sale sale;
    private ItemRegistry itemRegistry;
    private SaleInfo currentSaleInfo;
@@ -41,16 +47,18 @@ public class Controller {
      **/
     public void startSale(){
         sale = new Sale(this.itemRegistry, this.inventory);
-       
+        
     }
+
     /**
      * searches for the entered item
      * 
      * @param searchedItem the scanned item.
      * @return info about current sale
      **/
-    public SaleInfo searchEnteredItem(ItemDTO searchedItem){
-      return currentSaleInfo = sale.registerItem(searchedItem);
+    public SaleInfo searchEnteredItem(ItemDTO searchedItem)throws ItemRegistryException{
+        
+            return currentSaleInfo = sale.registerItem(searchedItem);
     }
     /**
      * Fetches current SaleInfo
@@ -64,7 +72,8 @@ public class Controller {
      * @param paidAmmount ammount of money handed to the cashier
      **/
     public void pay(int paidAmmount){
-    CashRegister cashRegister = new CashRegister(this.accounting);   
+    CashRegister cashRegister = new CashRegister(this.accounting); 
+    cashRegister.addSaleObserver(saleObserver);
     CashPayment payment = new CashPayment(paidAmmount, cashRegister);
     sale.pay(payment);
     cashRegister.addPayment(payment);
@@ -72,5 +81,7 @@ public class Controller {
     
     
     }
-            
+    public void addSaleObserver(SaleObserver obs){
+        this.saleObserver = obs;
+    }
 }

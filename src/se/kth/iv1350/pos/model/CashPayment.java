@@ -5,6 +5,7 @@
  */
 package se.kth.iv1350.pos.model;
 
+
 /**
  * Represent one specific cash payment for a specific sale.
  * 
@@ -15,8 +16,8 @@ public class CashPayment {
  
     public CashPayment(int paidAmmount, CashRegister cashRegister){
         this.paidAmmount = paidAmmount;
-        cashRegister.addPayment(this);
     }
+    
     //Change name to SetTotalPrice.
     public void getTotalPrice(SaleInfo paidSaleInfo){
       this.TotalCost=  paidSaleInfo.getRunningTotal();

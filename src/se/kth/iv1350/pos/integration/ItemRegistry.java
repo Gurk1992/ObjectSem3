@@ -20,13 +20,17 @@ public class ItemRegistry {
      * Checks if searched itemDTO is infact part of the stores item selection.
      *@param searchedItem   The specific item to search for.
      * @return founditem if item was found, else throw exception.
+     * @throws ItemRegistryException, if the item does not exist.
      */
-    public ItemDTO findItem(ItemDTO searchedItem){
+    public ItemDTO findItem(ItemDTO searchedItem) throws ItemRegistryException, DatabaseFailureException{
+        if (searchedItem.getItemID() == 5)
+                throw new DatabaseFailureException("Cannot process request. Not enough resources to process request. The service is currently busy. Please retry the request later.");
         for (ItemDTO foundItem : items){
             if(searchedItem.getItemID() == foundItem.getItemID())
                     return foundItem;
         }
-        throw new ItemRegistryException("No such Item was found in database: " + searchedItem);
+        throw new ItemRegistryException("No such Item was found in database: " + searchedItem.getItemID());
+        
     }
     private void addItems(){
         items.add(new ItemDTO(1, 1, 10));

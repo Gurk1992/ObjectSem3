@@ -10,6 +10,7 @@ import se.kth.iv1350.pos.view.View;
 import se.kth.iv1350.pos.integration.Accounting;
 import se.kth.iv1350.pos.integration.Inventory;
 import se.kth.iv1350.pos.integration.Printer;
+import java.io.IOException;
 /**
  *Contains the <code>main</code> method. Preforms all startup
  * of the application.
@@ -21,14 +22,22 @@ public class Main {
      * @param args Does not take any command line parameters.
      */
     public static void main(String[]args){
-        ItemRegistry itemRegistry = new ItemRegistry();
-        Accounting accounting = new Accounting();
-        Inventory inventory = new Inventory();
-        Printer printer = new Printer();
-        Controller contr = new Controller(itemRegistry, accounting, inventory, printer);
-        View View = new View(contr);
+        try{
+            ItemRegistry itemRegistry = new ItemRegistry();
+            Accounting accounting = new Accounting();
+            Inventory inventory = new Inventory();
+            Printer printer = new Printer();
+            Controller contr = new Controller(itemRegistry, accounting, inventory, printer);
+            View View = new View(contr);
+            View.sampleExecution();
+        }
+        catch(IOException exc){
+            System.out.println("Application could not be started!");
+            exc.printStackTrace();
+        }
         
-        View.sampleExecution();
+        
+        
     }
     
 }

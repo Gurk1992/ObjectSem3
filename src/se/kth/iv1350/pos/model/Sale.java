@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package se.kth.iv1350.pos.model;
+
+
 import se.kth.iv1350.pos.integration.ItemDTO;
 import se.kth.iv1350.pos.integration.ItemRegistry;
 import se.kth.iv1350.pos.integration.Printer;
@@ -18,6 +20,7 @@ public class Sale {
     private SaleInfo currentSaleInfo;
     private CashPayment payment;
     private Inventory inventory;
+    
     /**
      * Creates one new instance of a particular sale.
      * 
@@ -49,6 +52,7 @@ public class Sale {
         this.payment = payment;  
         this.inventory.uppdateInventory(currentSaleInfo);
     }
+    
     /**
      * Creates and prints out recipe.
      * 

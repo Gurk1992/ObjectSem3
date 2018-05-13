@@ -44,5 +44,20 @@ public class ItemRegistryTest {
        
         
     }
+    @Test
+    public void testfindItemNotExisting() throws ItemRegistryException {
+        ItemDTO searchedItem = new ItemDTO(4, 1, 10);
+        ItemRegistry instance = new ItemRegistry();
+        try{
+            instance.findItem(searchedItem);
+            fail("No such Item was found in database: " + searchedItem);
+        }
+        catch(ItemRegistryException exc){
+            assertTrue("Wrong Exception message, does not " + " contain itemID: " 
+                    + exc.getMessage(), 
+                    exc.getMessage().contains(searchedItem.toString()) );
+        }
+            
+    }
     
 }
