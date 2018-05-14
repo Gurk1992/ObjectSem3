@@ -26,7 +26,6 @@ public class ReceiptTest {
      */
     @Test
     public void testCreateReceiptString() {
-        ItemRegistry itemRegistry = new ItemRegistry();
         Inventory inventory = new Inventory(); 
         Accounting accounting = new Accounting();
         CashRegister cashRegister = new CashRegister(accounting);
@@ -35,13 +34,12 @@ public class ReceiptTest {
         ItemDTO itemDTO = new ItemDTO(1, 1, 10);
         Sale sale = new Sale(inventory);
         SaleInfo saleInfo = sale.registerItem(itemDTO);
-        
         saleInfo.recordSaleInfo(itemDTO);
         sale.pay(cashPayment);
        
         Receipt instance = new Receipt(saleInfo);
   
-        String expResult = "Sale\n\n" + "Sold ItemID: " + saleInfo.currentItemDTO().getItemID() + "\nCost: " 
+        String expResult = "Sale Receipt\n\n" + "Sold ItemID: " + saleInfo.currentItemDTO().getItemID() + "\nCost: " 
                            + saleInfo.getRunningTotal()
                            + "\nChange: " + saleInfo.ammountofChange() + "\n\n";
         

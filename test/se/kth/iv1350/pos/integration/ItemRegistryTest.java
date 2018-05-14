@@ -50,12 +50,12 @@ public class ItemRegistryTest {
         ItemRegistry instance = ItemRegistry.getRegistry();
         try{
             instance.findItem(searchedItem);
-            fail("No such Item was found in database: " + searchedItem);
+            fail("No such Item was found in database: " + searchedItem.getItemID());
         }
         catch(ItemRegistryException exc){
-            assertTrue("Wrong Exception message, does not " + " contain itemID: " 
+            assertTrue("Wrong Exception message, does not contain itemID: " 
                     + exc.getMessage(), 
-                    exc.getMessage().contains(searchedItem.toString()) );
+                    exc.getMessage().contains(String.valueOf(searchedItem.getItemID())));
         }
             
     }

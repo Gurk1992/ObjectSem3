@@ -94,9 +94,10 @@ public class ControllerTest {
         this.instance.startSale();
         saleInfo = this.instance.searchEnteredItem(itemDTO);
         int paidAmmount = 20;
+        this.instance.endSale();
         this.instance.pay(paidAmmount);
     
-        String expResult = "Sale\n\n" + "Sold ItemID: " + 
+        String expResult = "Sale Receipt\n\n" + "Sold ItemID: " + 
                              saleInfo.currentItemDTO().getItemID() + "\nCost: " 
                            + saleInfo.getRunningTotal() + "\nChange: " 
                            + saleInfo.ammountofChange() + "\n\n";

@@ -60,7 +60,7 @@ public class PrinterTest {
   
         Printer instance = new Printer();
         instance.printReceipt(receipt);
-        String expResult = "Sale\n\n" + "Sold ItemID: " + saleInfo.currentItemDTO().getItemID() + "\nCost: " 
+        String expResult = "Sale Receipt\n\n" + "Sold ItemID: " + saleInfo.currentItemDTO().getItemID() + "\nCost: " 
                            + saleInfo.getRunningTotal()
                            + "\nChange: " + saleInfo.ammountofChange() + "\n\n";
         

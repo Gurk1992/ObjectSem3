@@ -88,13 +88,14 @@ public class SaleTest {
        
         Receipt instance = new Receipt(saleInfo);
   
-        String expResult = "Sale\n\n" + "Sold ItemID: " + saleInfo.currentItemDTO().getItemID() + "\nCost: " 
+        String expResult = "Sale Receipt\n\n" + "Sold ItemID: " + saleInfo.currentItemDTO().getItemID() + "\nCost: " 
                            + saleInfo.getRunningTotal()
                            + "\nChange: " + saleInfo.ammountofChange() + "\n\n";
         
         
         String result = instance.createReceiptString(); 
-       
+        System.out.println(result);
+        System.out.println(expResult);
         assertTrue("Wrong printout.", result.contains(expResult));
         assertTrue("Wrong receipt content.", result.contains(expResult));
     }
