@@ -23,10 +23,10 @@ public class SaleInfoTest {
      */
     @Test
     public void testRecordSaleInfo() {
-        ItemRegistry itemRegistry = new ItemRegistry();
+  
         Inventory inventory = new Inventory();
         ItemDTO foundItem = new ItemDTO(1 ,1 ,10 );
-        Sale sale = new Sale(itemRegistry, inventory);
+        Sale sale = new Sale(inventory);
         SaleInfo instance = new SaleInfo(foundItem, sale);
         int expResult = 10;
         int result = instance.recordSaleInfo(foundItem).getcurrentItemPrice();

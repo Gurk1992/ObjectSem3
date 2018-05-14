@@ -5,7 +5,6 @@
  */
 package se.kth.iv1350.pos.startup;
 import se.kth.iv1350.pos.controller.Controller;
-import se.kth.iv1350.pos.integration.ItemRegistry;
 import se.kth.iv1350.pos.view.View;
 import se.kth.iv1350.pos.integration.Accounting;
 import se.kth.iv1350.pos.integration.Inventory;
@@ -23,11 +22,10 @@ public class Main {
      */
     public static void main(String[]args){
         try{
-            ItemRegistry itemRegistry = new ItemRegistry();
             Accounting accounting = new Accounting();
             Inventory inventory = new Inventory();
             Printer printer = new Printer();
-            Controller contr = new Controller(itemRegistry, accounting, inventory, printer);
+            Controller contr = new Controller(accounting, inventory, printer);
             View View = new View(contr);
             View.sampleExecution();
         }

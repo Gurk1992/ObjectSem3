@@ -12,10 +12,14 @@ import java.util.List;
  * Contains all the calls to the data store with items.
  */
 public class ItemRegistry {
+    
     private List<ItemDTO> items = new ArrayList<>();
-    public ItemRegistry(){
-        addItems();
-    }    
+    private static final ItemRegistry ITEMREGISTRY = new ItemRegistry();
+        
+    public static ItemRegistry getRegistry(){
+        ITEMREGISTRY.addItems();
+        return ITEMREGISTRY;
+    }
     /**
      * Checks if searched itemDTO is infact part of the stores item selection.
      *@param searchedItem   The specific item to search for.

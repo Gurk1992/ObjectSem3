@@ -47,7 +47,7 @@ public class ControllerTest {
         ItemRegistry itemRegistrya = new ItemRegistry();
         
         
-        instance = new Controller(itemRegistrya, accounting, inventory, printer);
+        instance = new Controller(accounting, inventory, printer);
     }
     
     @After

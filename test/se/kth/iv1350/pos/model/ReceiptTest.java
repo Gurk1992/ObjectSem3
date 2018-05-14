@@ -33,7 +33,7 @@ public class ReceiptTest {
         int payment = 20;
         CashPayment cashPayment = new CashPayment(payment, cashRegister);
         ItemDTO itemDTO = new ItemDTO(1, 1, 10);
-        Sale sale = new Sale(itemRegistry, inventory);
+        Sale sale = new Sale(inventory);
         SaleInfo saleInfo = sale.registerItem(itemDTO);
         
         saleInfo.recordSaleInfo(itemDTO);

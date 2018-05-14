@@ -5,10 +5,6 @@
  */
 package se.kth.iv1350.pos.model;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import se.kth.iv1350.pos.integration.ItemDTO;
@@ -22,25 +18,6 @@ import se.kth.iv1350.pos.integration.Inventory;
  */
 public class SaleTest {
     
-    public SaleTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
     /**
      * Test of registerItem method, of class Sale.
      */
@@ -49,7 +26,7 @@ public class SaleTest {
         
         ItemDTO searchedItem = new ItemDTO(1,1,10);
         ItemRegistry itemRegistry = new ItemRegistry();
-        Sale instance = new Sale(itemRegistry, null);
+        Sale instance = new Sale(null);
         SaleInfo saleInfo = new SaleInfo(searchedItem, instance);
         
         instance.registerItem(searchedItem);
@@ -63,7 +40,7 @@ public class SaleTest {
         
         ItemDTO searchedItem = new ItemDTO(1,1,30);
         ItemRegistry itemRegistry = new ItemRegistry();
-        Sale instance = new Sale(itemRegistry, null);
+        Sale instance = new Sale(null);
         SaleInfo saleInfo = new SaleInfo(searchedItem, instance);
         
         instance.registerItem(searchedItem);
@@ -83,7 +60,7 @@ public class SaleTest {
         CashPayment payment = new CashPayment(20, cashRegister);
         ItemRegistry itemRegistry = new ItemRegistry();
         Inventory inventory = new Inventory();
-        Sale instance = new Sale(itemRegistry, inventory );
+        Sale instance = new Sale(inventory );
         ItemDTO itemDTO = new ItemDTO(1,1,10);
         instance.registerItem(itemDTO);
         instance.pay(payment);
@@ -97,14 +74,13 @@ public class SaleTest {
      */
     @Test
     public void testPrintReceipt() {
-         ItemRegistry itemRegistry = new ItemRegistry();
         Inventory inventory = new Inventory(); 
         Accounting accounting = new Accounting();
         CashRegister cashRegister = new CashRegister(accounting);
         int payment = 20;
         CashPayment cashPayment = new CashPayment(payment, cashRegister);
         ItemDTO itemDTO = new ItemDTO(1, 1, 10);
-        Sale sale = new Sale(itemRegistry, inventory);
+        Sale sale = new Sale(inventory);
         SaleInfo saleInfo = sale.registerItem(itemDTO);
         
         saleInfo.recordSaleInfo(itemDTO);

@@ -44,14 +44,13 @@ public class PrinterTest {
      */
    @Test
     public void testCreateReceiptString() {
-        ItemRegistry itemRegistry = new ItemRegistry();
         Inventory inventory = new Inventory(); 
         Accounting accounting = new Accounting();
         CashRegister cashRegister = new CashRegister(accounting);
         int payment = 20;
         CashPayment cashPayment = new CashPayment(payment, cashRegister);
         ItemDTO itemDTO = new ItemDTO(1, 1, 10);
-        Sale sale = new Sale(itemRegistry, inventory);
+        Sale sale = new Sale(inventory);
         SaleInfo saleInfo = sale.registerItem(itemDTO);
         
         saleInfo.recordSaleInfo(itemDTO);

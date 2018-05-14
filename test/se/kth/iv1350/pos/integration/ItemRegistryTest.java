@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  * @author oscar
  */
 public class ItemRegistryTest {
-     
+
     /**
      * Test of findItem method, of class ItemRegistry.
      */
@@ -22,7 +22,7 @@ public class ItemRegistryTest {
     public void testFindItem() {
         
         ItemDTO searchedItem = new ItemDTO(1, 1, 10);
-        ItemRegistry instance = new ItemRegistry();
+        ItemRegistry instance = ItemRegistry.getRegistry();
         int expResult = searchedItem.getItemID();
         int result = instance.findItem(searchedItem).getItemID();
         assertEquals("Item was found ", expResult, result);
@@ -37,7 +37,7 @@ public class ItemRegistryTest {
     public void testFindItemOutofBound() {
         
         ItemDTO searchedItem = new ItemDTO(4, 1, 10);
-        ItemRegistry instance = new ItemRegistry();
+        ItemRegistry instance = ItemRegistry.getRegistry();
         int expResult = 4;
         int result = instance.findItem(searchedItem).getItemID();
         assertEquals("Item was found not found ", expResult, result);
@@ -46,8 +46,8 @@ public class ItemRegistryTest {
     }
     @Test
     public void testfindItemNotExisting() throws ItemRegistryException {
-        ItemDTO searchedItem = new ItemDTO(4, 1, 10);
-        ItemRegistry instance = new ItemRegistry();
+        ItemDTO searchedItem = new ItemDTO(8, 1, 10);
+        ItemRegistry instance = ItemRegistry.getRegistry();
         try{
             instance.findItem(searchedItem);
             fail("No such Item was found in database: " + searchedItem);

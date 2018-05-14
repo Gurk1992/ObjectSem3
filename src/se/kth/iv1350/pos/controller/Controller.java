@@ -10,11 +10,11 @@ package se.kth.iv1350.pos.controller;
 import se.kth.iv1350.pos.integration.ItemDTO;
 import se.kth.iv1350.pos.model.Sale;
 import se.kth.iv1350.pos.model.SaleInfo;
-import se.kth.iv1350.pos.integration.ItemRegistry;
 import se.kth.iv1350.pos.model.CashPayment;
 import se.kth.iv1350.pos.model.CashRegister;
 import se.kth.iv1350.pos.integration.Accounting;
 import se.kth.iv1350.pos.integration.Inventory;
+import se.kth.iv1350.pos.integration.ItemRegistry;
 import se.kth.iv1350.pos.integration.Printer;
 import se.kth.iv1350.pos.integration.ItemRegistryException;
 import se.kth.iv1350.pos.model.SaleObserver;
@@ -34,8 +34,8 @@ public class Controller {
    private Printer printer;
    
    
-    public Controller(ItemRegistry itemRegistry, Accounting accounting, Inventory inventory, Printer printer) {
-        this.itemRegistry = itemRegistry;
+    public Controller(Accounting accounting, Inventory inventory, Printer printer) {
+        this.itemRegistry = ItemRegistry.getRegistry();
         this.accounting = accounting;
         this.inventory = inventory;
         this.printer = printer;
@@ -46,7 +46,7 @@ public class Controller {
      * 
      **/
     public void startSale(){
-        sale = new Sale(this.itemRegistry, this.inventory);
+        sale = new Sale(this.inventory);
         
     }
 

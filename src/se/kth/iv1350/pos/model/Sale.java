@@ -24,11 +24,10 @@ public class Sale {
     /**
      * Creates one new instance of a particular sale.
      * 
-     * @param itemRegistry the datastore containing info about items in the Db.
      * @param inventory the implemented class that talks to external inventory program.
      **/
-   public Sale(ItemRegistry itemRegistry, Inventory inventory){
-       this.itemRegistry = itemRegistry;
+   public Sale(Inventory inventory){
+       this.itemRegistry = ItemRegistry.getRegistry();
        this.inventory = inventory;
    }
     /**
@@ -73,7 +72,7 @@ public class Sale {
      * @return The matching Item from itemDB with the same ID.
      */
     private ItemDTO searchForItem(ItemDTO searchedItem){
-        return itemRegistry.findItem(searchedItem);
+        return this.itemRegistry.findItem(searchedItem);
     }
     /**
      * Records the found item inside currentSaleInfo.
