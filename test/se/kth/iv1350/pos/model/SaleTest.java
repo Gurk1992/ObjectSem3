@@ -94,8 +94,7 @@ public class SaleTest {
         
         
         String result = instance.createReceiptString(); 
-        System.out.println(result);
-        System.out.println(expResult);
+        
         assertTrue("Wrong printout.", result.contains(expResult));
         assertTrue("Wrong receipt content.", result.contains(expResult));
     }
