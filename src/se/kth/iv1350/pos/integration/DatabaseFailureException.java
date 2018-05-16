@@ -16,6 +16,6 @@ public class DatabaseFailureException extends RuntimeException {
  * @param msg cointans error message
  */
     public DatabaseFailureException(String msg){
-        super();
+        super(msg);
     }
 }

@@ -13,6 +13,7 @@ import se.kth.iv1350.pos.model.SaleInfo;
 import se.kth.iv1350.pos.model.CashPayment;
 import se.kth.iv1350.pos.model.CashRegister;
 import se.kth.iv1350.pos.integration.Accounting;
+import se.kth.iv1350.pos.integration.DatabaseFailureException;
 import se.kth.iv1350.pos.integration.Inventory;
 import se.kth.iv1350.pos.integration.ItemRegistry;
 import se.kth.iv1350.pos.integration.Printer;
@@ -56,7 +57,7 @@ public class Controller {
      * @param searchedItem the scanned item.
      * @return info about current sale
      **/
-    public SaleInfo searchEnteredItem(ItemDTO searchedItem)throws ItemRegistryException{
+    public SaleInfo searchEnteredItem(ItemDTO searchedItem)throws ItemRegistryException, DatabaseFailureException{
         
             return currentSaleInfo = sale.registerItem(searchedItem);
     }

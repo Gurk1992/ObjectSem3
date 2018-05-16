@@ -8,9 +8,8 @@ import se.kth.iv1350.pos.controller.Controller;
 import se.kth.iv1350.pos.integration.ItemDTO;
 import se.kth.iv1350.pos.model.SaleInfo;
 import se.kth.iv1350.pos.integration.ItemRegistryException;
-import se.kth.iv1350.pos.util.LogHandler;
-import java.io.IOException;
 import se.kth.iv1350.pos.integration.DatabaseFailureException;
+import se.kth.iv1350.pos.util.Logger;
 
 /**
  *The hard coded view, placeholder of the view.
@@ -20,14 +19,19 @@ public class View {
     
     private SaleInfo saleInfo;
     private Controller contr;
-    private ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
-    private LogHandler logger = new LogHandler();
+    private Logger logger;
+    
+    public void setLogger(Logger logger){
+        this.logger = logger;
+    }
+    
     /**
      * Creates a new view instance.
      *
      * @param contr The controller that is used for all operations.
+     * 
      */
-    public View(Controller contr) throws IOException{
+    public View(Controller contr){
         this.contr = contr;
         contr.addSaleObserver(new TotalRevenueView());
     }
@@ -35,9 +39,9 @@ public class View {
      * Represents the interface of the program.
      * 
      **/
-     public void sampleExecution() {
+     public void sampleExecution(){
        
-        ItemDTO searchedItem = new ItemDTO(1, 1, 0);
+        ItemDTO searchedItem = new ItemDTO(5, 1, 0);
         try{
             contr.startSale();
             
@@ -48,16 +52,15 @@ public class View {
             int paidAmmount = 20;
             contr.pay( paidAmmount);
             }
-        catch(ItemRegistryException ItemRegExc){
-            handleException("ItemId "+ String.valueOf(searchedItem.getItemID())+ " can not be found in database", ItemRegExc);
-        }
         catch(DatabaseFailureException DatabaseExc)
         {
-            handleException("Something went wrong in DB", DatabaseExc);
+            
+            logger.log(DatabaseExc.getMessage());
+      
+        }
+        catch(ItemRegistryException ItemRegExc){
+            logger.log(ItemRegExc.getLocalizedMessage());
         }
     }
-     private void handleException(String uiMsg, Exception exc) {
-        errorMsgHandler.showErrorMsg(uiMsg);
-        logger.logException(exc);
-    }
+  
 }

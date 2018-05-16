@@ -6,6 +6,7 @@
 package se.kth.iv1350.pos.integration;
 import java.util.ArrayList;
 import java.util.List;
+import se.kth.iv1350.pos.util.Logger;
 
 
 /**
@@ -27,9 +28,10 @@ public class ItemRegistry {
      * @throws ItemRegistryException, if the item does not exist.
      */
     public ItemDTO findItem(ItemDTO searchedItem) throws ItemRegistryException, DatabaseFailureException{
-        if (searchedItem.getItemID() == 5)
-                throw new DatabaseFailureException("Cannot process request. Not enough resources to process request. The service is currently busy. Please retry the request later.");
+        
         for (ItemDTO foundItem : items){
+            if (searchedItem.getItemID() == 5)
+                throw new DatabaseFailureException("The database is currently busy. Please try again.");
             if(searchedItem.getItemID() == foundItem.getItemID())
                     return foundItem;
         }

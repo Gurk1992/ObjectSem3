@@ -6,10 +6,12 @@
 package se.kth.iv1350.pos.model;
 
 
+import se.kth.iv1350.pos.integration.DatabaseFailureException;
 import se.kth.iv1350.pos.integration.ItemDTO;
 import se.kth.iv1350.pos.integration.ItemRegistry;
 import se.kth.iv1350.pos.integration.Printer;
 import se.kth.iv1350.pos.integration.Inventory;
+import se.kth.iv1350.pos.integration.ItemRegistryException;
 
 
 /**
@@ -36,7 +38,7 @@ public class Sale {
      * @param searchedItem the particular item that is being searched.
      * @return info about current sale
      **/
-    public SaleInfo registerItem(ItemDTO searchedItem){
+    public SaleInfo registerItem(ItemDTO searchedItem)throws ItemRegistryException, DatabaseFailureException{
       ItemDTO foundItem = searchForItem(searchedItem);
       recordItem(foundItem);
       return currentSaleInfo;
