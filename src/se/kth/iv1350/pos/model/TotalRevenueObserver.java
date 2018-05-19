@@ -9,10 +9,10 @@ package se.kth.iv1350.pos.model;
  *A listerner interface that recives info about Sales
  * 
  */
-public interface SaleObserver {
+public interface TotalRevenueObserver {
     /**
      *Called when payment has been made.
      * @param payment that has been made
      **/
-    void newPayment(CashPayment payment);
+    void newPayment(int payment);
 }

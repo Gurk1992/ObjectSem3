@@ -28,4 +28,5 @@ public class CashPayment {
     public int getPaidAmmount(){
         return this.paidAmmount;
     }
+    
 }

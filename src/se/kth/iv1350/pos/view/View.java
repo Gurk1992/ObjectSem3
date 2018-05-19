@@ -43,14 +43,14 @@ public class View {
      **/
      public void sampleExecution(){
        
-        ItemDTO searchedItem = new ItemDTO(5, 1, 0);
+        ItemDTO searchedItem = new ItemDTO(3, 1, 0);
         try{
             contr.startSale();
             
             this.saleInfo = contr.searchEnteredItem(searchedItem);
-            System.out.println("The total price is: "+saleInfo.getRunningTotal() +"\nScanned item price is: "+saleInfo.getcurrentItemPrice());
+            //System.out.println("The total price is: "+saleInfo.getRunningTotal() +"\nScanned item price is: "+saleInfo.getcurrentItemPrice());
             SaleInfo endSaleInfo = contr.endSale();
-            System.out.println("The final price is: "+endSaleInfo.getRunningTotal()+"\n");
+            //System.out.println("The final price is: "+endSaleInfo.getRunningTotal()+"\n");
             int paidAmmount = 20;
             contr.pay( paidAmmount);
             }
@@ -66,7 +66,10 @@ public class View {
         catch(ItemRegistryException ItemRegExc){
             setLogger(new ConsoleLogger());
             logger.log(ItemRegExc.getLocalizedMessage());
+            setLogger(new FileLogger());
+            logger.log(ItemRegExc.getLocalizedMessage());
         }
     }
+     
      
 }

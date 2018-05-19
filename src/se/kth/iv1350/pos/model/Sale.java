@@ -12,7 +12,7 @@ import se.kth.iv1350.pos.integration.ItemRegistry;
 import se.kth.iv1350.pos.integration.Printer;
 import se.kth.iv1350.pos.integration.Inventory;
 import se.kth.iv1350.pos.integration.ItemRegistryException;
-import se.kth.iv1350.pos.util.Logger;
+
 
 
 /**

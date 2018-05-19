@@ -15,7 +15,7 @@ public class CashRegister {
     private int balance;
     private Accounting accounting;
     private CashPayment cashPayment;
-    private SaleObserver saleObserver;
+    private TotalRevenueObserver saleObserver;
     
    public CashRegister(Accounting accounting){
        this.accounting = accounting;
@@ -35,13 +35,13 @@ public class CashRegister {
      * Notifies observers about info.
      **/
     private void notifyObservers(){
-            this.saleObserver.newPayment(cashPayment);
+            this.saleObserver.newPayment(cashPayment.getPaidAmmount());
         }
     /**
      * adds observer to list
      * @param obs Observer to add.
      **/
-    public void addSaleObserver(SaleObserver obs){
+    public void addTotalRevenueObserver(TotalRevenueObserver obs){
         this.saleObserver = obs;
     }
 }

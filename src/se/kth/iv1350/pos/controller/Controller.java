@@ -18,7 +18,7 @@ import se.kth.iv1350.pos.integration.Inventory;
 import se.kth.iv1350.pos.integration.ItemRegistry;
 import se.kth.iv1350.pos.integration.Printer;
 import se.kth.iv1350.pos.integration.ItemRegistryException;
-import se.kth.iv1350.pos.model.SaleObserver;
+import se.kth.iv1350.pos.model.TotalRevenueObserver;
 
 
 /**
@@ -26,7 +26,7 @@ import se.kth.iv1350.pos.model.SaleObserver;
  * through here.
 **/
 public class Controller {
-   private SaleObserver saleObserver;
+   private TotalRevenueObserver saleObserver;
    private Sale sale;
    private ItemRegistry itemRegistry;
    private SaleInfo currentSaleInfo;
@@ -74,7 +74,7 @@ public class Controller {
      **/
     public void pay(int paidAmmount){
     CashRegister cashRegister = new CashRegister(this.accounting); 
-    cashRegister.addSaleObserver(saleObserver);
+    cashRegister.addTotalRevenueObserver(saleObserver);
     CashPayment payment = new CashPayment(paidAmmount, cashRegister);
     sale.pay(payment);
     cashRegister.addPayment(payment);
@@ -82,7 +82,7 @@ public class Controller {
     
     
     }
-    public void addSaleObserver(SaleObserver obs){
+    public void addSaleObserver(TotalRevenueObserver obs){
         this.saleObserver = obs;
     }
 }
