@@ -1,1 +1,1 @@
-null
+The database is currently busy. Please try again.

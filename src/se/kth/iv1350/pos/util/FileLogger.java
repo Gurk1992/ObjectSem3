@@ -31,6 +31,7 @@ public class FileLogger implements Logger {
      * Specific string gets printed to the log.
      * @param message particualr message to log.
      **/
+    @Override
     public void log(String message){
         logStream.println(message);
     }

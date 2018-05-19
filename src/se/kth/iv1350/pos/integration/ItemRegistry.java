@@ -26,6 +26,7 @@ public class ItemRegistry {
      *@param searchedItem   The specific item to search for.
      * @return founditem if item was found, else throw exception.
      * @throws ItemRegistryException, if the item does not exist.
+     * @throws DatabaseFailureException if the database fails (when ItemID =5).
      */
     public ItemDTO findItem(ItemDTO searchedItem) throws ItemRegistryException, DatabaseFailureException{
         

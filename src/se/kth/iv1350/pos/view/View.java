@@ -9,6 +9,8 @@ import se.kth.iv1350.pos.integration.ItemDTO;
 import se.kth.iv1350.pos.model.SaleInfo;
 import se.kth.iv1350.pos.integration.ItemRegistryException;
 import se.kth.iv1350.pos.integration.DatabaseFailureException;
+import se.kth.iv1350.pos.util.ConsoleLogger;
+import se.kth.iv1350.pos.util.FileLogger;
 import se.kth.iv1350.pos.util.Logger;
 
 /**
@@ -21,7 +23,7 @@ public class View {
     private Controller contr;
     private Logger logger;
     
-    public void setLogger(Logger logger){
+    private void setLogger(Logger logger){
         this.logger = logger;
     }
     
@@ -54,13 +56,17 @@ public class View {
             }
         catch(DatabaseFailureException DatabaseExc)
         {
-            
+            setLogger(new FileLogger());
             logger.log(DatabaseExc.getMessage());
+            setLogger(new ConsoleLogger());
+            logger.log("System crashed try again!");
+            
       
         }
         catch(ItemRegistryException ItemRegExc){
+            setLogger(new ConsoleLogger());
             logger.log(ItemRegExc.getLocalizedMessage());
         }
     }
-  
+     
 }

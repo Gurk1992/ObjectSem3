@@ -12,6 +12,7 @@ import se.kth.iv1350.pos.integration.ItemRegistry;
 import se.kth.iv1350.pos.integration.Printer;
 import se.kth.iv1350.pos.integration.Inventory;
 import se.kth.iv1350.pos.integration.ItemRegistryException;
+import se.kth.iv1350.pos.util.Logger;
 
 
 /**
@@ -22,7 +23,8 @@ public class Sale {
     private SaleInfo currentSaleInfo;
     private CashPayment payment;
     private Inventory inventory;
-    
+
+  
     /**
      * Creates one new instance of a particular sale.
      * 
@@ -83,4 +85,5 @@ public class Sale {
         currentSaleInfo = new SaleInfo(foundItem, this);
         currentSaleInfo.recordSaleInfo(foundItem);
     }
+   
 }
